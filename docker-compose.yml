@@ -1,8 +1,7 @@
 tomcat:
-#  image: dordoka/tomcat
   build: .
   ports:
   - "8080:8080"
   - "9009:8009"
   volumes:
-  - ./shared:/opt/tomcat/webapps/
+  - ./shared:/shared
