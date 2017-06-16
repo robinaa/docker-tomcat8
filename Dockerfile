@@ -1,3 +1,8 @@
+
+FROM ubuntu:14.04
+
+MAINTAINER Aaron T Robin <devworkarobin@gmail.com>
+
 ENV TOMCAT_VERSION 7.0.78
 
 # Set locales
