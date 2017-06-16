@@ -1,4 +1,3 @@
-
 FROM ubuntu:14.04
 
 MAINTAINER Aaron T Robin <devworkarobin@gmail.com>
@@ -18,16 +17,13 @@ RUN apt-get update --fix-missing&& \
 apt-get install -y git build-essential curl wget software-properties-common
 
 # Install JDK 7
-
 RUN apt-get install -y openjdk-7-jre-headless
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 
 # Get Tomcat
-#RUN wget --quiet --no-cookies http://apache.rediris.es/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
-RUN wget --quiet --no-cookies http://mirror.fibergrid.in/apache/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
-#RUN wget --quiet --no-cookies http://mirror.fibergrid.in/apache/tomcat/tomcat-7/v7.0.78/bin/apache-tomcat-7.0.78.tar.gz
+RUN wget --quiet --no-cookies http://redrockdigimark.com/apachemirror/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
 rm /tmp/tomcat.tgz && \
@@ -37,7 +33,6 @@ rm -rf /opt/tomcat/webapps/ROOT
 
 # Add admin/admin user
 ADD tomcat-users.xml /opt/tomcat/conf/
-
 
 ENV CATALINA_HOME /opt/tomcat
 ENV PATH $PATH:$CATALINA_HOME/bin
